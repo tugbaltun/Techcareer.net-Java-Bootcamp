@@ -8,6 +8,7 @@ public class Question3 {
             "wholeness and it is original in its own outcomes. It can be combined with a couple of level and a final."+
             "Those were the information that Hilmi got from Wikipedia. He is really into the car races. He watches them"+
             "on T.V whenever he can. He is planning to go and watch a race next weekend and he is just really excited";
+
     private static void countingTheElements(String str){
         ArrayList<String> myList = new ArrayList<>();
         String splitArray[] = str.toLowerCase().split(" ");
@@ -32,7 +33,6 @@ public class Question3 {
                 }
             }
         }
-
     }
 
     public static void main(String[] arg) {

@@ -5,7 +5,7 @@ public class UserThread extends Thread{
     private Socket socket;
     private Server server;
 
-    private final String filePath = "C:\\Users\\Tugba\\Desktop\\SendingFile\\example.txt";
+    private final String filePath = "C:\\Users\\Tugba\\Desktop\\example.txt";
 
     public UserThread(Socket socket, Server server){
         this.server = server;

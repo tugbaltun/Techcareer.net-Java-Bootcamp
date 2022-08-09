@@ -26,7 +26,7 @@ public class Client {
         }catch (Exception e){
             System.out.println(e.getLocalizedMessage());
         }finally {
-            System.out.println("A file was sent to you by the server!");
+            System.out.println("Process finished!");
         }
     }
     public static void main(String[] args){

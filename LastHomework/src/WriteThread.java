@@ -7,7 +7,7 @@ public class WriteThread extends Thread {
     private Socket socket;
     private Client client;
 
-    private final String filePath = "C:\\Users\\Tugba\\Desktop\\ReceivingFile\\exampleNew.txt";
+    private final String filePath = "C:\\Users\\Tugba\\Desktop\\exampleNew.txt";
 
     public WriteThread(Socket socket, Client client){
         this.socket = socket;
@@ -32,11 +32,13 @@ public class WriteThread extends Thread {
         client.setUserName(userName);
         writer.println(userName);
 
+
         byte[] buffer = new byte[2002];
         InputStream dataInputStream = socket.getInputStream();
         FileOutputStream fileOutputStream = new FileOutputStream(filePath);
         dataInputStream.read(buffer,0,buffer.length);
-        fileOutputStream.write(buffer,0,buffer.length);
+        fileOutputStream.write(buffer,0, buffer.length);
+
 
         socket.close();
 

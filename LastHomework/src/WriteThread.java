@@ -7,6 +7,8 @@ public class WriteThread extends Thread {
     private Socket socket;
     private Client client;
 
+    private final String filePath = "C:\\Users\\Tugba\\Desktop\\ReceivingFile\\exampleNew.txt";
+
     public WriteThread(Socket socket, Client client){
         this.socket = socket;
         this.client = client;
@@ -23,25 +25,18 @@ public class WriteThread extends Thread {
     public void run(){
         try{
         Scanner scanner = new Scanner(System.in);
-        System.out.println("WriteThread is started!");
-        System.out.println("Enter your userName:");
+        System.out.print("Enter your name:");
 
-        String text, userName;
+        String userName;
         userName = scanner.nextLine();
         client.setUserName(userName);
         writer.println(userName);
 
-        byte b[] = new byte[2002];
-        InputStream input = socket.getInputStream();
-        FileOutputStream output = new FileOutputStream("C:\\Users\\Tugba\\Desktop\\exampleBackup.txt");
-        input.read(b, 0, b.length);
-        output.write(b, 0, b.length);
-
-/*      do{
-            System.out.print("["+userName+"]:");
-            text = scanner.nextLine();
-            writer.println(text);
-        }while (!text.contains("bye"));*/
+        byte[] buffer = new byte[2002];
+        InputStream dataInputStream = socket.getInputStream();
+        FileOutputStream fileOutputStream = new FileOutputStream(filePath);
+        dataInputStream.read(buffer,0,buffer.length);
+        fileOutputStream.write(buffer,0,buffer.length);
 
         socket.close();
 

@@ -7,20 +7,14 @@ public class Server {
         try(ServerSocket listener = new ServerSocket(3000)){
             while (true){
                 Socket socket = listener.accept();
-
-                //Thread burada başlar
                 UserThread user = new UserThread(socket, this);
                 user.start();
-
-                //Client'a gönderilen bilgi
-                OutputStream output = socket.getOutputStream();
-                PrintWriter writer = new PrintWriter(output, true);
-                //clientData += " geldi";
-                //writer.println(clientData);
 
             }
         }catch (Exception e){
             System.out.println("Error:"+e.getLocalizedMessage());
+        }finally {
+            System.out.println("You sent a file to the client.");
         }
     }
     public static void main(String[] args){
@@ -29,7 +23,5 @@ public class Server {
         server.execute();
 
     }
-
-
 
 }

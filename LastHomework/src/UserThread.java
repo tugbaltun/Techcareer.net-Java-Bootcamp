@@ -6,6 +6,8 @@ public class UserThread extends Thread{
     private Socket socket;
     private Server server;
 
+    private final String filePath = "C:\\Users\\Tugba\\Desktop\\SendingFile\\example.txt";
+
     public UserThread(Socket socket, Server server){
         this.server = server;
         this.socket = socket;
@@ -13,30 +15,23 @@ public class UserThread extends Thread{
 
     public void run(){
         try{
-            System.out.println("User thread has been started for the client");
-            //Client'tan, gelen bilgi
             InputStream input = socket.getInputStream();
             BufferedReader reader = new BufferedReader(new InputStreamReader(input));
-            String userName = reader.readLine();
+            String userName = reader.readLine(), serverMessage;
             System.out.println(socket.toString());
             System.out.println("'"+userName+"' has connected to the server!");
 
 
-            String serverMessage;
+            byte[] buffer = new byte[2002];
+            FileInputStream fileInputStream = new FileInputStream(filePath);
+            fileInputStream.read(buffer,0,buffer.length);
+            OutputStream dataOutputStream = socket.getOutputStream();
+            dataOutputStream.write(buffer,0,buffer.length);
 
-            FileInputStream fileInputStream = new FileInputStream("C:\\Users\\Tugba\\Desktop\\example.txt");
-            byte b[] = new byte[2002];
-            fileInputStream.read(b, 0, b.length);
-            OutputStream output = socket.getOutputStream();
-            output.write(b, 0, b.length);
+            serverMessage = "File was sent to user ["+userName+"]!";
+            System.out.println(serverMessage);
 
- /*           do{
-                clientMessage = reader.readLine();
-                serverMessage = "["+userName+"]:"+clientMessage;
-                System.out.println(serverMessage);
-            }while(!clientMessage.toLowerCase().contains("bye"));*/
-
-            serverMessage = userName + " has left the server!";
+            serverMessage = "[" +userName + "] has left the server!";
             System.out.println(serverMessage);
             socket.close();
 

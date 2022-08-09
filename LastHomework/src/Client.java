@@ -10,10 +10,7 @@ public class Client {
     private static Scanner scanner = new Scanner(System.in);
     private static String server;
     private static int port;
-    private static String serverData;
     private static String userName;
-
-    private static boolean closed;
 
     public void execute(){
         try(Socket socket = new Socket(server, port)){
@@ -22,12 +19,6 @@ public class Client {
             WriteThread writeThread = new WriteThread(socket, this);
             writeThread.start();
 
-            //Server'a giden bilgi
- //           OutputStream output = socket.getOutputStream();
- //           PrintWriter writer = new PrintWriter(output, true);
- //           writer.println(serverData);
-
-            //Server'dan gelen bilgi
             InputStream input = socket.getInputStream();
             BufferedReader reader = new BufferedReader((new InputStreamReader(input)));
             String gdata = reader.readLine();
@@ -36,7 +27,7 @@ public class Client {
         }catch (Exception e){
             System.out.println(e.getLocalizedMessage());
         }finally {
-            System.out.println("Process is finished.");
+            System.out.println("A file was sent to you by the server!");
         }
     }
     public static void main(String[] args){
@@ -45,14 +36,11 @@ public class Client {
             server = args[0];
             port = parseInt(args[1]);
         }else{
-            System.out.println("Enter server URL:");
+            System.out.print("Enter server URL:");
             server = scanner.nextLine();
-            System.out.println("Enter the server port number:");
+            System.out.print("Enter the server port number:");
             port = parseInt(scanner.nextLine());
         }
-
-        System.out.println("Enter your text:");
-        serverData = scanner.nextLine();
 
         Client client = new Client();
         client.execute();
@@ -67,11 +55,4 @@ public class Client {
         return this.userName;
     }
 
-    public void setClosed(boolean closed){
-        this.closed = closed;
-    }
-
-    public boolean getClosed(){
-        return this.closed;
-    }
 }

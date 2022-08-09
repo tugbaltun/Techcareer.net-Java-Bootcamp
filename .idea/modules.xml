@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/FinalHomework/FinalHomework.iml" filepath="$PROJECT_DIR$/FinalHomework/FinalHomework.iml" />
       <module fileurl="file://$PROJECT_DIR$/Homework2/Homework2.iml" filepath="$PROJECT_DIR$/Homework2/Homework2.iml" />
-      <module fileurl="file://$PROJECT_DIR$/LastHomework/LastHomework.iml" filepath="$PROJECT_DIR$/LastHomework/LastHomework.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/Techcareer.net-Java-Bootcamp.iml" filepath="$PROJECT_DIR$/.idea/Techcareer.net-Java-Bootcamp.iml" />
     </modules>
   </component>

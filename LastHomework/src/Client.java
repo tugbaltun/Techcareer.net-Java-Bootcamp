@@ -1,6 +1,5 @@
 import java.io.*;
 import java.net.Socket;
-import java.util.Locale;
 import java.util.Scanner;
 
 import static java.lang.Integer.parseInt;

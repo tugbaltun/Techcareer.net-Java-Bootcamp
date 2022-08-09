@@ -1,6 +1,5 @@
 import java.io.*;
 import java.net.Socket;
-import java.util.Locale;
 
 public class UserThread extends Thread{
     private Socket socket;
